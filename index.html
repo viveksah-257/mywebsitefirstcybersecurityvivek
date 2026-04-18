@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)file:///C:/Users/Vivek/OneDrive/Desktop/cyber.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>CyberShield MFA | OTP &amp; Multi-Factor Authentication | Vivek Sah</title>
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="./CyberShield MFA _ OTP &amp; Multi-Factor Authentication _ Vivek Sah_files/all.min.css">
+  <!-- Google Fonts: modern sans -->
+  <link href="./CyberShield MFA _ OTP &amp; Multi-Factor Authentication _ Vivek Sah_files/css2" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at 10% 20%, #0a0f1e, #03060c);
+      color: #eef5ff;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f1722;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2a6df4;
+      border-radius: 10px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(5, 10, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(42, 109, 244, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #2a6df4, #00c6fb);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+    .nav-profile-photo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #2a6df4;
+      background: #111827;
+      box-shadow: 0 0 8px rgba(42,109,244,0.4);
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      color: #ccdeff;
+      text-decoration: none;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: #2a6df4;
+      text-shadow: 0 0 4px #2a6df4;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    section {
+      margin-bottom: 4rem;
+    }
+    .card {
+      background: rgba(12, 20, 30, 0.65);
+      backdrop-filter: blur(6px);
+      border-radius: 2rem;
+      border: 1px solid rgba(42, 109, 244, 0.25);
+      padding: 2rem;
+      transition: transform 0.25s ease, box-shadow 0.3s;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(42, 109, 244, 0.6);
+      box-shadow: 0 25px 40px -12px #2a6df430;
+    }
+    
+    /* Clickable card style */
+    .clickable-card {
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .clickable-card:hover {
+      transform: translateY(-8px);
+      background: rgba(20, 40, 60, 0.8);
+      border-color: #2a6df4;
+      box-shadow: 0 10px 20px rgba(42,109,244,0.3);
+    }
+    
+    h2 {
+      font-size: 1.9rem;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid #2a6df4;
+      padding-left: 1rem;
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 1.4rem;
+      margin: 1rem 0 0.8rem 0;
+      font-weight: 600;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(95deg, #1e3a8a, #2a6df4);
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 1rem;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #2a6df4;
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: #2a6df4;
+      color: white;
+    }
+    .btn:hover {
+      transform: scale(1.02);
+      background: linear-gradient(95deg, #2563eb, #3b82f6);
+      box-shadow: 0 8px 18px #2a6df450;
+    }
+
+    .hero-screen {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+    }
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(145deg, #1e2a3a, #0b1120);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1rem auto;
+      border: 3px solid #2a6df4;
+      box-shadow: 0 0 20px rgba(42,109,244,0.5);
+      overflow: hidden;
+    }
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-placeholder-icon {
+      font-size: 4.2rem;
+      color: #bbd9ff;
+    }
+    .opening-text {
+      max-width: 650px;
+      background: rgba(0,0,0,0.4);
+      padding: 1.8rem;
+      border-radius: 2rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .login-form {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .input-group {
+      margin-bottom: 1.4rem;
+      text-align: left;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      background: #111927;
+      border: 1px solid #2d3a4e;
+      border-radius: 1.2rem;
+      color: white;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+    .input-group input:focus {
+      outline: none;
+      border-color: #2a6df4;
+      box-shadow: 0 0 0 2px #2a6df450;
+    }
+
+    .otp-sim-box {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .flex-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .otp-status {
+      margin-top: 1.2rem;
+      background: #0a111e;
+      padding: 1rem;
+      border-radius: 1.5rem;
+      border-left: 4px solid #2a6df4;
+    }
+    .tele-info {
+      background: #07111e;
+      border-radius: 1.5rem;
+      padding: 1rem;
+      margin-top: 1rem;
+      font-family: monospace;
+    }
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+    }
+    .auth-card {
+      background: #0f172ad9;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      transition: 0.2s;
+    }
+    .auth-card i {
+      font-size: 2.2rem;
+      color: #2a6df4;
+      margin-bottom: 0.8rem;
+    }
+    
+    /* MODAL STYLES - Popup that opens inside */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-content {
+      background: #0a1222;
+      border-radius: 2rem;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 2rem;
+      border: 1px solid #2a6df4;
+      box-shadow: 0 30px 50px rgba(0,0,0,0.6);
+      position: relative;
+    }
+    .modal-content h3 {
+      color: #2a6df4;
+      margin-top: 0;
+    }
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #aaa;
+      transition: 0.2s;
+    }
+    .close-modal:hover { color: white; }
+    
+    footer {
+      background: #03070fcc;
+      backdrop-filter: blur(8px);
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #2a6df4;
+      font-size: 0.85rem;
+    }
+    .hidden {
+      display: none;
+    }
+    .success-badge {
+      color: #2dd4bf;
+      font-weight: bold;
+    }
+    .warning {
+      color: #facc15;
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    @media (max-width: 720px) {
+      .navbar {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      h2 {
+        font-size: 1.6rem;
+      }
+      .card {
+        padding: 1.4rem;
+      }
+    }
+    .glow-text {
+      background: linear-gradient(135deg, #c084fc, #60a5fa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .photo-hint {
+      font-size: 0.7rem;
+      background: #1e293b;
+      padding: 4px 8px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .red-dot-icon {
+      background: #ef4444;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-left: 8px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.4; transform: scale(0.8);}
+      100% { opacity: 1; transform: scale(1.2);}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">
+    <img id="navProfileImg" class="nav-profile-photo" src="./CyberShield MFA _ OTP &amp; Multi-Factor Authentication _ Vivek Sah_files/vivekkkkk.jpeg" alt="Profile" onerror="this.onerror=null; this.style.display=&#39;none&#39;; document.getElementById(&#39;navPhotoPlaceholder&#39;).style.display=&#39;flex&#39;;" style="display: block;">
+    <div id="navPhotoPlaceholder" style="display: none; align-items: center; gap: 6px;">
+      <i class="fas fa-user-circle" style="font-size: 36px; color:#2a6df4;"></i>
+      <span class="photo-hint"><i class="fas fa-info-circle"></i> Set photo path</span>
+      <span class="red-dot-icon"></span>
+    </div>
+    <span>CyberVault MFA</span>
+  </div>
+  <div class="nav-links">
+    <a href="file:///C:/Users/Vivek/OneDrive/Desktop/cyber.html#home">Home</a>
+    <a href="file:///C:/Users/Vivek/OneDrive/Desktop/cyber.html#demo">OTP Sim</a>
+    <a href="file:///C:/Users/Vivek/OneDrive/Desktop/cyber.html#explain">Insights</a>
+    <a href="file:///C:/Users/Vivek/OneDrive/Desktop/cyber.html#mechanisms">Mechanisms</a>
+    <a href="file:///C:/Users/Vivek/OneDrive/Desktop/cyber.html#attacks">Attacks</a>
+    <a href="file:///C:/Users/Vivek/OneDrive/Desktop/cyber.html#banking-security">Bank Security</a>
+  </div>
+</nav>
+
+<main>
+  <!-- OPENING SCREEN SECTION -->
+  <div id="openingScreen" class="container hero-screen">
+    <div class="profile-img" id="openingProfileContainer">
+      <img id="openingProfileImg" src="./CyberShield MFA _ OTP &amp; Multi-Factor Authentication _ Vivek Sah_files/vivekkkkk.jpeg" alt="Vivek Sah Photo" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.onerror=null; this.style.display=&#39;none&#39;; document.getElementById(&#39;openingIconFallback&#39;).style.display=&#39;flex&#39;;">
+      <div id="openingIconFallback" style="display: none; align-items: center; justify-content: center; width: 100%; height: 100%;">
+        <i class="fas fa-user-secret profile-placeholder-icon"></i>
+      </div>
+    </div>
+    <div class="opening-text">
+      <h1 style="font-size: 2.2rem;">🔐 OTP &amp; Multi-Factor Authentication<br>in Banking Systems</h1>
+      <p style="margin: 1rem 0; font-size: 1.2rem;"><strong>Created by Vivek Sah</strong></p>
+      <p><i class="fas fa-graduation-cap"></i> This project is created for educational purpose to demonstrate OTP and Multi-Factor Authentication in Banking Systems.</p>
+      <button id="enterBtn" class="btn" style="margin-top: 2rem;"><i class="fas fa-arrow-right"></i> Enter Website</button>
+    </div>
+    <div style="margin-top: 1.5rem; background: #0f172a80; padding: 8px 18px; border-radius: 40px; font-size: 0.8rem;">
+      <i class="fas fa-image"></i> 📸 <strong>Photo location hint:</strong> Place your photo at: <code style="background:#00000060; padding:2px 6px; border-radius:12px;">C:\Users\Vivek\Downloads\your_photo.jpg</code>
+      <span class="red-dot-icon" style="vertical-align: middle;"></span>
+      <button id="setPhotoBtn" style="background:#2a6df4; border:none; border-radius: 20px; padding: 4px 12px; margin-left: 10px; cursor:pointer; color:white;"><i class="fas fa-pen"></i> Set Photo Path</button>
+    </div>
+  </div>
+
+  <!-- MAIN WEBSITE CONTENT -->
+  <div id="mainContent" class="hidden">
+    
+    <!-- Login System Section -->
+    <div class="container" id="home">
+      <div class="card login-form">
+        <h2><i class="fas fa-sign-in-alt"></i> Secure Access · Login (First Step)</h2>
+        <p style="margin-bottom: 1.5rem;">Enter your email and password to begin MFA flow. (Demo simulation)</p>
+        <div class="input-group">
+          <label><i class="fas fa-envelope"></i> Email Address</label>
+          <input type="email" id="loginEmail" placeholder="vivek@cyber.edu">
+        </div>
+        <div class="input-group">
+          <label><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="loginPassword" placeholder="••••••••">
+        </div>
+        <button id="loginBtn" class="btn"><i class="fas fa-key"></i> Login &amp; Proceed to MFA</button>
+        <p id="loginMessage" style="margin-top: 1rem; font-size: 0.85rem;"></p>
+      </div>
+    </div>
+
+    <!-- OTP Simulation System Section -->
+    <div class="container" id="demo">
+      <div class="card">
+        <h2><i class="fas fa-mobile-alt"></i> OTP Simulation · Multi-Factor Authentication Demo</h2>
+        <p><strong>Educational simulation only:</strong> After login, enter any mobile number → Generate OTP → Verify → See simulated telecom data.</p>
+        <div class="otp-sim-box">
+          <div class="input-group">
+            <label><i class="fas fa-phone"></i> Mobile Number (any demo number)</label>
+            <input type="tel" id="mobileNumber" placeholder="+91 98765 43210" value="+91 98765 43210">
+          </div>
+          <div class="flex-row">
+            <button id="generateOtpBtn" class="btn btn-outline"><i class="fas fa-random"></i> Generate OTP</button>
+            <span id="generatedOtpDisplay" style="background:#0f172a; padding: 0.5rem 1rem; border-radius: 2rem; font-family: monospace;"></span>
+          </div>
+          <div class="input-group">
+            <label>Enter 6-digit OTP</label>
+            <div class="flex-row">
+              <input type="text" id="otpInput" maxlength="6" placeholder="XXXXXX" style="flex:1;">
+              <button id="verifyOtpBtn" class="btn"><i class="fas fa-check-circle"></i> Verify OTP</button>
+            </div>
+          </div>
+          <div id="otpVerificationMsg" class="otp-status"><i class="fas fa-info-circle"></i> After login, generate OTP to simulate 2FA.</div>
+          <div id="telecomInfoBox" class="tele-info hidden">
+            <i class="fas fa-tower-cell"></i> <strong>📡 Simulated Telecom Credentials (Demo Only)</strong><br>
+            <span id="telecomDetails"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: What I Can Do With This Project - CLICKABLE CARDS -->
+    <div class="container" id="explain">
+      <div class="card">
+        <h2><i class="fas fa-brain"></i> What This Project Demonstrates <span style="font-size:0.8rem;">(click any card for details)</span></h2>
+        <div class="grid-cards">
+          <div class="auth-card clickable-card" data-modal="modal-otp-demo">
+            <i class="fas fa-key"></i><h3>OTP Authentication</h3>
+            <p>One-Time Passwords add a dynamic layer — valid only for seconds/minutes. Our simulator shows generation &amp; verification flow.</p>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-mfa-demo">
+            <i class="fas fa-layer-group"></i><h3>Multi-Factor Authentication (MFA)</h3>
+            <p>Combining password (knowledge) + OTP (possession via mobile) dramatically reduces account takeover risk.</p>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-banking-sec">
+            <i class="fas fa-university"></i><h3>Banking Security</h3>
+            <p>Banks use MFA/OTP to secure transactions, login, and high-risk operations — preventing fraud and unauthorized transfers.</p>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-cyber-aware">
+            <i class="fas fa-shield-virus"></i><h3>Cyber Security Awareness</h3>
+            <p>This simulation teaches why extra layers are critical against phishing, credential stuffing, and social engineering.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authentication Mechanisms Section - CLICKABLE CARDS -->
+    <div class="container" id="mechanisms">
+      <div class="card">
+        <h2><i class="fas fa-fingerprint"></i> Authentication Mechanisms <span style="font-size:0.8rem;">(click for details)</span></h2>
+        <div class="grid-cards">
+          <div class="auth-card clickable-card" data-modal="modal-password">
+            <i class="fas fa-lock"></i>
+            <h3>1. Password-Based Authentication</h3>
+            <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+              <li>Traditional &amp; most common method — user credentials</li>
+              <li>Vulnerable to brute-force, phishing, and weak passwords</li>
+              <li>Banks enforce strong password policies</li>
+            </ul>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-otp-mech">
+            <i class="fas fa-clock"></i>
+            <h3>2. One-Time Password (OTP)</h3>
+            <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+              <li>Time-based or event-based, valid for single session</li>
+              <li>Delivered via SMS, authenticator app, or email</li>
+              <li>Prevents replay attacks</li>
+            </ul>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-biometric">
+            <i class="fas fa-fingerprint"></i>
+            <h3>3. Biometric Authentication</h3>
+            <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+              <li>Fingerprint, facial recognition, iris scan</li>
+              <li>Extremely secure against impersonation</li>
+              <li>Used in mobile banking apps</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEW: CYBER ATTACKS SECTION - CLICKABLE CARDS -->
+    <div class="container" id="attacks">
+      <div class="card">
+        <h2><i class="fas fa-skull-crossbones"></i> Common Cyber Attacks on Authentication <span style="font-size:0.8rem;">(click for details)</span></h2>
+        <div class="grid-cards">
+          <div class="auth-card clickable-card" data-modal="modal-phishing">
+            <i class="fas fa-fish"></i><h3>Phishing Attack</h3>
+            <p>Fake emails/websites trick users into revealing credentials, passwords, and OTPs.</p>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-mitm">
+            <i class="fas fa-exchange-alt"></i><h3>Man-in-the-Middle (MITM)</h3>
+            <p>Attacker secretly intercepts and alters communication between user and bank.</p>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-bruteforce">
+            <i class="fas fa-bolt"></i><h3>Brute Force Attack</h3>
+            <p>Automated trial-and-error method to guess passwords, OTPs, or encryption keys.</p>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-simswap">
+            <i class="fas fa-sim-card"></i><h3>SIM Swapping</h3>
+            <p>Attacker tricks mobile carrier into transferring victim's phone number to intercept OTPs.</p>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-ddos">
+            <i class="fas fa-network-wired"></i><h3>DDoS Attack</h3>
+            <p>Distributed Denial-of-Service overwhelms systems with traffic, making services unavailable.</p>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-malware">
+            <i class="fas fa-bug"></i><h3>Malware Attack</h3>
+            <p>Viruses, worms, trojans, ransomware designed to infiltrate and damage systems.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Banks Use Multi-Factor Authentication - CLICKABLE CARDS -->
+    <div class="container" id="banking-security">
+      <div class="card">
+        <h2><i class="fas fa-chart-line"></i> Why Banks Use Multi-Factor Authentication <span style="font-size:0.8rem;">(click for details)</span></h2>
+        <div class="grid-cards">
+          <div class="auth-card clickable-card" data-modal="modal-protect">
+            <i class="fas fa-hacker"></i><h3>Protects from Hackers</h3>
+            <p>MFA blocks 99.9% of account compromise attacks even if passwords leak.</p>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-prevent">
+            <i class="fas fa-ban"></i><h3>Prevents Unauthorized Access</h3>
+            <p>Attackers need physical access to second factor (phone/token) — drastically harder.</p>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-layer">
+            <i class="fas fa-shield-alt"></i><h3>Extra Security Layer</h3>
+            <p>Defense in depth: even if one factor fails, others secure the account.</p>
+          </div>
+          <div class="auth-card clickable-card" data-modal="modal-fraud">
+            <i class="fas fa-chart-simple"></i><h3>Reduces Fraud in Banking</h3>
+            <p>Real-time OTP verification for wire transfers, login, and high-value payments lowers fraud rate.</p>
+          </div>
+        </div>
+        <div style="margin-top: 1.5rem; background: #07152a; border-radius: 1rem; padding: 1rem;">
+          <i class="fas fa-info-circle"></i> <strong>Educational note:</strong> modern banking apps combine push notifications, biometrics, and hardware tokens to deliver strong MFA.
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p><i class="fas fa-laptop-code"></i> Project: OTP &amp; Multi-Factor Authentication in Banking Systems | Created by Vivek Sah</p>
+      <p style="margin-top: 0.5rem;">🔐 For academic demonstration only — all OTP and telecom info are simulated, no real data collection.</p>
+      <p>© 2026 Cyber Security PBL — Fundamentals of Cyber Security</p>
+    </footer>
+  </div>
+</main>
+
+<!-- MODAL OVERLAY - Popup for details -->
+<div id="modalOverlay" class="modal-overlay">
+  <div class="modal-content">
+    <span class="close-modal">×</span>
+    <div id="modalBody">
+      <!-- Dynamic content will be inserted here -->
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- PHOTO HANDLER ----------
+  const setPhotoBtn = document.getElementById('setPhotoBtn');
+  const navImg = document.getElementById('navProfileImg');
+  const openingImg = document.getElementById('openingProfileImg');
+  const navPlaceholderDiv = document.getElementById('navPhotoPlaceholder');
+  const openingFallback = document.getElementById('openingIconFallback');
+  
+  function setProfilePhotoFromPath(path) {
+    if (!path) return;
+    let formattedPath = path.replace(/\\/g, '/');
+    if (!formattedPath.startsWith('file://') && (formattedPath.includes('C:') || formattedPath.includes(':'))) {
+      formattedPath = 'file:///' + formattedPath;
+    }
+    navImg.src = formattedPath;
+    openingImg.src = formattedPath;
+    navImg.style.display = 'block';
+    if (navPlaceholderDiv) navPlaceholderDiv.style.display = 'none';
+    navImg.onerror = () => {
+      navImg.style.display = 'none';
+      if(navPlaceholderDiv) navPlaceholderDiv.style.display = 'flex';
+      openingImg.style.display = 'none';
+      if(openingFallback) openingFallback.style.display = 'flex';
+      alert("Photo not found at given path. Please check location.");
+    };
+    openingImg.onerror = () => {
+      openingImg.style.display = 'none';
+      if(openingFallback) openingFallback.style.display = 'flex';
+    };
+    openingImg.onload = () => {
+      openingImg.style.display = 'block';
+      if(openingFallback) openingFallback.style.display = 'none';
+    };
+    navImg.onload = () => {
+      navImg.style.display = 'block';
+      if(navPlaceholderDiv) navPlaceholderDiv.style.display = 'none';
+    };
+    localStorage.setItem('savedPhotoPath', formattedPath);
+  }
+
+  // Try to load saved photo
+  const savedPath = localStorage.getItem('savedPhotoPath');
+  if (savedPath) {
+    setProfilePhotoFromPath(savedPath);
+  }
+
+  setPhotoBtn.addEventListener('click', () => {
+    let userPath = prompt("📸 Enter full path to your photo:\nExample: C:\\Users\\Vivek\\Downloads\\myphoto.jpg", "C:\\Users\\Vivek\\Downloads\\profile.jpg");
+    if (userPath) {
+      setProfilePhotoFromPath(userPath);
+    }
+  });
+  
+  // DOM elements for main flow
+  const openingScreenDiv = document.getElementById('openingScreen');
+  const mainContentDiv = document.getElementById('mainContent');
+  const enterBtnMain = document.getElementById('enterBtn');
+  
+  // Login elements
+  const loginBtn = document.getElementById('loginBtn');
+  const loginEmailInput = document.getElementById('loginEmail');
+  const loginPasswordInput = document.getElementById('loginPassword');
+  const loginMessageSpan = document.getElementById('loginMessage');
+  
+  // OTP elements
+  const mobileInput = document.getElementById('mobileNumber');
+  const generateBtn = document.getElementById('generateOtpBtn');
+  const generatedOtpSpan = document.getElementById('generatedOtpDisplay');
+  const otpInputField = document.getElementById('otpInput');
+  const verifyBtn = document.getElementById('verifyOtpBtn');
+  const otpMsgDiv = document.getElementById('otpVerificationMsg');
+  const telecomBox = document.getElementById('telecomInfoBox');
+  const telecomDetailsSpan = document.getElementById('telecomDetails');
+  
+  let currentGeneratedOTP = null;
+  let isLoggedIn = false;
+  let isOtpVerified = false;
+  
+  // 1. ENTER WEBSITE
+  enterBtnMain.addEventListener('click', () => {
+    openingScreenDiv.style.display = 'none';
+    mainContentDiv.classList.remove('hidden');
+    document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+  });
+  
+  // 2. LOGIN SYSTEM
+  loginBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = loginEmailInput.value.trim();
+    const pwd = loginPasswordInput.value.trim();
+    if (email === "" || pwd === "") {
+      loginMessageSpan.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please enter both Email and Password to simulate MFA.';
+      loginMessageSpan.style.color = "#facc15";
+      isLoggedIn = false;
+    } else {
+      loginMessageSpan.innerHTML = '<i class="fas fa-check-circle"></i> ✅ First factor (password) accepted! Now proceed to OTP (second factor).';
+      loginMessageSpan.style.color = "#2dd4bf";
+      isLoggedIn = true;
+      setTimeout(() => {
+        document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
+      }, 800);
+    }
+  });
+  
+  // 3. OTP SIMULATION
+  function generateRandomOTP() {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+  }
+  
+  const simProviders = ["Airtel", "Jio", "Vi (Vodafone Idea)", "BSNL"];
+  const issueDates = ["12 March 2021", "15 August 2020", "02 January 2019", "30 November 2022", "18 July 2020"];
+  const demoOwners = ["Demo User", "Vivek Sah (simulated)", "Test Account Holder", "Sample Subscriber"];
+  
+  generateBtn.addEventListener('click', () => {
+    if (!isLoggedIn) {
+      otpMsgDiv.innerHTML = '<span class="warning"><i class="fas fa-lock"></i> Please login first (Email & Password) before generating OTP.</span>';
+      telecomBox.classList.add('hidden');
+      return;
+    }
+    isOtpVerified = false;
+    currentGeneratedOTP = generateRandomOTP();
+    generatedOtpSpan.innerHTML = `<i class="fas fa-eye-slash"></i> OTP: ${currentGeneratedOTP} (simulated for demo)`;
+    otpMsgDiv.innerHTML = '<span class="warning"><i class="fas fa-clock"></i> New OTP generated. Enter the code to verify second factor.</span>';
+    telecomBox.classList.add('hidden');
+    otpInputField.value = '';
+  });
+  
+  verifyBtn.addEventListener('click', () => {
+    if (!isLoggedIn) {
+      otpMsgDiv.innerHTML = '<span class="warning"><i class="fas fa-lock"></i> Please complete login first (Email/Password).</span>';
+      return;
+    }
+    if (!currentGeneratedOTP) {
+      otpMsgDiv.innerHTML = '<span class="warning"><i class="fas fa-times-circle"></i> No OTP generated. Click "Generate OTP" first.</span>';
+      telecomBox.classList.add('hidden');
+      return;
+    }
+    const enteredOtp = otpInputField.value.trim();
+    if (enteredOtp === currentGeneratedOTP) {
+      isOtpVerified = true;
+      otpMsgDiv.innerHTML = '<span class="success-badge"><i class="fas fa-check-double"></i> ✅ OTP Verified Successfully! Multi-Factor Authentication complete.</span>';
+      const mobileNum = mobileInput.value.trim() || "+91 9876543210";
+      const providerIndex = (mobileNum.length % simProviders.length);
+      const provider = simProviders[providerIndex];
+      const issueDate = issueDates[mobileNum.length % issueDates.length];
+      const ownerIndex = (mobileNum.replace(/\D/g, '').length % demoOwners.length);
+      const owner = demoOwners[ownerIndex];
+      telecomDetailsSpan.innerHTML = `
+        📱 <strong>SIM Provider:</strong> ${provider}<br>
+        📅 <strong>SIM Issued Date:</strong> ${issueDate}<br>
+        👤 <strong>Registered Owner:</strong> ${owner}<br>
+        🔒 <strong>Verification Status:</strong> OTP Verified Successfully (simulated telecom data - educational purpose)
+      `;
+      telecomBox.classList.remove('hidden');
+    } else {
+      otpMsgDiv.innerHTML = '<span style="color:#ff9f4a;"><i class="fas fa-times-circle"></i> Invalid OTP. Please check the 6-digit code and try again.</span>';
+      telecomBox.classList.add('hidden');
+      isOtpVerified = false;
+    }
+  });
+  
+  // navigation links smooth scroll
+  document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+  
+  generatedOtpSpan.innerHTML = '';
+  otpMsgDiv.innerHTML = '<i class="fas fa-info-circle"></i> After login, generate OTP to simulate 2FA.';
+  
+  // ---------------------- MODAL SYSTEM - For all clickable cards ----------------------
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalBody = document.getElementById('modalBody');
+  const closeModalBtn = document.querySelector('.close-modal');
+  
+  // Detailed content for each modal
+  const modalContents = {
+    'modal-otp-demo': `<h3><i class="fas fa-key"></i> OTP Authentication - Detailed Explanation</h3><p>One-Time Password (OTP) is a dynamically generated code valid for only one login session or transaction. In banking, OTPs are sent via SMS, email, or authenticator apps. They prevent replay attacks because even if intercepted, the code expires within minutes.</p><p><strong>How it helps:</strong> Even if a hacker steals your password, they cannot access your account without the OTP sent to your registered mobile number.</p><p><strong>Real-world example:</strong> When you make an online payment, your bank sends a 6-digit OTP to your phone. Without entering that code, the transaction cannot be completed.</p>`,
+    
+    'modal-mfa-demo': `<h3><i class="fas fa-layer-group"></i> Multi-Factor Authentication (MFA) - Detailed Explanation</h3><p>MFA requires two or more verification factors: something you know (password), something you have (OTP/phone), something you are (biometric). Banks implement MFA to create layered defense.</p><p><strong>Educational Note:</strong> This project simulates password (first factor) + OTP (second factor). Real banking apps also add device fingerprinting.</p><p><strong>Statistics:</strong> According to Microsoft, MFA blocks 99.9% of automated account compromise attacks.</p>`,
+    
+    'modal-banking-sec': `<h3><i class="fas fa-university"></i> Banking Security with MFA</h3><p>Banks face constant threats like account takeover and unauthorized transactions. MFA reduces fraud by 99.9%. Examples: OTP for wire transfers, biometric login in mobile banking apps.</p><p><strong>Regulations:</strong> Many central banks (RBI, Federal Reserve) mandate MFA for digital banking transactions.</p><p>This project demonstrates how OTP adds a critical security layer in banking systems.</p>`,
+    
+    'modal-cyber-aware': `<h3><i class="fas fa-shield-virus"></i> Cyber Security Awareness</h3><p>Users must understand that passwords alone are not enough. Phishing attacks can steal credentials, but MFA stops them. Always enable MFA on financial accounts.</p><p><strong>Best Practices:</strong> Use strong unique passwords, enable 2FA/MFA, avoid clicking suspicious links, keep software updated, and never share OTP with anyone.</p>`,
+    
+    'modal-password': `<h3><i class="fas fa-lock"></i> Password-Based Authentication - Detailed</h3><p>Most common method: username + secret password. Vulnerabilities: weak passwords, reuse across sites, phishing, keyloggers. Banks enforce complexity (uppercase, numbers, symbols) and combine with other factors.</p><p><strong>Security Tips:</strong> Use password managers, create long passwords (12+ characters), never share passwords, change them regularly.</p>`,
+    
+    'modal-otp-mech': `<h3><i class="fas fa-clock"></i> One-Time Password (OTP) Mechanisms</h3><p>Two types: TOTP (Time-based One-Time Password, e.g., Google Authenticator) and HOTP (HMAC-based One-Time Password, event-based). SMS OTP is common but vulnerable to SIM swapping. Authenticator apps are more secure.</p><p><strong>How TOTP works:</strong> A shared secret key and current time generate a 6-digit code that changes every 30 seconds.</p>`,
+    
+    'modal-biometric': `<h3><i class="fas fa-fingerprint"></i> Biometric Authentication - Detailed</h3><p>Uses unique physical traits: fingerprint, face ID, iris scan, voice recognition. Very secure but can be spoofed with high-tech methods. Banks use biometrics for convenient yet strong second factor on mobile devices.</p><p><strong>Advantages:</strong> Cannot be forgotten or stolen easily. <strong>Disadvantages:</strong> Privacy concerns, cannot be changed if compromised.</p>`,
+    
+    'modal-phishing': `<h3><i class="fas fa-fish"></i> Phishing Attack - Detailed Explanation</h3><p>Attackers send fake emails/SMS pretending to be from bank. They direct victims to fake login pages to steal credentials. MFA prevents this because OTP goes to real user's phone.</p><p><strong>Real-world example:</strong> 2022 phishing campaign against major banks — MFA stopped 90% of compromise attempts.</p><p><strong>Prevention:</strong> Always verify sender, don't click suspicious links, check URL carefully, enable MFA.</p>`,
+    
+    'modal-mitm': `<h3><i class="fas fa-exchange-alt"></i> Man-in-the-Middle (MITM) Attack</h3><p>Attacker intercepts communication between user and bank server, capturing passwords and OTPs in real-time. HTTPS/TLS encryption helps, but MFA with push notifications reduces risk.</p><p><strong>Prevention:</strong> Use VPN on public Wi-Fi, ensure websites use HTTPS, avoid unsecured networks for banking.</p>`,
+    
+    'modal-bruteforce': `<h3><i class="fas fa-bolt"></i> Brute Force Attack - Detailed</h3><p>Automated tool tries millions of password/OTP combinations. Banks implement rate limiting, account lockouts, and OTP expiry after few attempts to prevent this.</p><p><strong>Types:</strong> Simple brute force (all combinations), dictionary attack (common words), credential stuffing (leaked passwords).</p>`,
+    
+    'modal-simswap': `<h3><i class="fas fa-sim-card"></i> SIM Swapping Attack</h3><p>Attacker tricks mobile carrier into transferring victim's phone number to attacker's SIM. They then receive OTPs. Banks now use app-based authenticators (Google Authenticator, Authy) or call verification to mitigate.</p><p><strong>Protection:</strong> Use authenticator apps instead of SMS, set a PIN with mobile carrier, avoid sharing personal info online.</p>`,
+    
+    'modal-ddos': `<h3><i class="fas fa-network-wired"></i> DDoS Attack - Distributed Denial of Service</h3><p>Multiple compromised systems (botnet) flood a target server with traffic, making banking services unavailable. The Mirai botnet attacked DNS provider Dyn, taking down major websites.</p><p><strong>Impact on Banking:</strong> Customers cannot access accounts, perform transactions, leading to financial loss and reputational damage.</p>`,
+    
+    'modal-malware': `<h3><i class="fas fa-bug"></i> Malware Attack - Detailed</h3><p>Malicious software includes viruses, worms, trojans, ransomware, spyware. WannaCry ransomware infected 200,000+ computers worldwide. Banking trojans (like Zeus) steal login credentials.</p><p><strong>Prevention:</strong> Install antivirus, keep software updated, avoid downloading from untrusted sources, backup important data.</p>`,
+    
+    'modal-protect': `<h3><i class="fas fa-hacker"></i> Protects from Hackers - Detailed</h3><p>MFA makes stolen credentials useless. According to Microsoft, MFA blocks 99.9% of automated attacks. Banks report 80% reduction in account takeovers after MFA deployment.</p><p><strong>Why it works:</strong> Even if password is stolen via phishing or data breach, attacker cannot login without the second factor (OTP/phone/biometric).</p>`,
+    
+    'modal-prevent': `<h3><i class="fas fa-ban"></i> Prevents Unauthorized Access</h3><p>Even if password is leaked via data breach, attacker cannot login without second factor. This stops remote attacks completely unless physical device is stolen.</p><p><strong>Example:</strong> If a hacker gets your email password from a data breach, they still cannot access your bank account because they don't have your phone for OTP.</p>`,
+    
+    'modal-layer': `<h3><i class="fas fa-shield-alt"></i> Extra Security Layer (Defense in Depth)</h3><p>No single security measure is perfect. Layering password + OTP + device verification ensures that compromising one factor doesn't break the whole system.</p><p>This is called "Defense in Depth" - multiple layers of security working together.</p>`,
+    
+    'modal-fraud': `<h3><i class="fas fa-chart-simple"></i> Reduces Fraud in Banking Systems</h3><p>Real-time OTP verification for high-risk transactions (large transfers, new payee addition) has reduced authorized push payment fraud by over 70% in leading banks.</p><p><strong>Example:</strong> If someone tries to transfer money from your account, you receive an OTP. Without entering it, the transaction is blocked.</p>`
+  };
+  
+  // Add click listeners to all clickable cards
+  document.querySelectorAll('.clickable-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      const modalId = card.getAttribute('data-modal');
+      if (modalId && modalContents[modalId]) {
+        modalBody.innerHTML = modalContents[modalId];
+        modalOverlay.classList.add('active');
+      }
+    });
+  });
+  
+  // Close modal when clicking X or outside
+  closeModalBtn.addEventListener('click', () => {
+    modalOverlay.classList.remove('active');
+  });
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+      modalOverlay.classList.remove('active');
+    }
+  });
+  
+  console.log("Ready: Click on any card to see detailed information!");
+</script>
+
+
+</body></html>
